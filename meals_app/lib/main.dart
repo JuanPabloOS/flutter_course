@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/categories_screen.dart';
+import 'screens/meal_details_screen.dart';
+import 'screens/tabs_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,13 +27,20 @@ class MyApp extends StatelessWidget {
                 fontSize: 20,
                 fontFamily: 'RobotoCondensed',
                 fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
               ),
             ),
       ),
-      home: CategoriesScreen(),
+      home: TabsScreen(),
       routes: {
-        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
+        MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
+      },
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+        return MaterialPageRoute(builder: (context) => CategoriesScreen());
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (context) => CategoriesScreen());
       },
     );
   }
