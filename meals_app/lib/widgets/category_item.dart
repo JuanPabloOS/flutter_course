@@ -20,6 +20,8 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
+      color: Colors.transparent,
       child: InkWell(
         onTap: () => selectCategory(context),
         splashColor: Theme.of(context).primaryColor,
